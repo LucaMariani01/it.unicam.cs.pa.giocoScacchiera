@@ -1,6 +1,4 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
-
-
 import java.util.Objects;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 

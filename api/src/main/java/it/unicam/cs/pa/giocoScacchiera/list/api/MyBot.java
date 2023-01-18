@@ -14,14 +14,17 @@ public class MyBot implements Bot {
         Random random = new Random();
         ArrayList<Integer> nPezziConMosse =  this.getArrayPezzi(mappaMosse,s,c);
         int scelta = random.nextInt(24)+1 ;
-        if (nPezziConMosse.contains(scelta))
-        {
-            Pezzo p = s.listaPosizionePezzi().keySet().stream().filter(e->e.getN()==scelta).findAny().get();
-            Pair<Pezzo,Mosse> mossaBot = new Pair<>(p,this.muoviSingoloPezzo(mappaMosse,p));
+        do {
+            scelta = random.nextInt(24)+1 ;
+        }while (!nPezziConMosse.contains(scelta));
 
-            System.out.println("IL BOT MUOVE IL PEZZO NUMERO :"+scelta +" FACENDO LA MOSSA : "+mossaBot.getValue() );
-            return mossaBot;
-        }else return this.faiMossa(c,s,mappaMosse);
+        int finalScelta = scelta;
+        Pezzo p = s.listaPosizionePezzi().keySet().stream().filter(e->e.getN()== finalScelta).findAny().get();
+        Pair<Pezzo,Mosse> mossaBot = new Pair<>(p,this.muoviSingoloPezzo(mappaMosse,p));
+
+        System.out.println("IL BOT MUOVE IL PEZZO NUMERO :"+scelta +" FACENDO LA MOSSA : "+mossaBot.getValue() );
+        return mossaBot;
+
 
     }
 

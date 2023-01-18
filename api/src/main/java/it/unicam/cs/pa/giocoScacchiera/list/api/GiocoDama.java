@@ -70,7 +70,7 @@ public class GiocoDama implements Gioco {
     }
 
     /**
-     *  Applica l'input dell'utente
+     *  Applica i dati inseriti dell'utente
      * @param p coppia pezzo, mossa
      * @return p se la mossa non è stata effettuata
      */

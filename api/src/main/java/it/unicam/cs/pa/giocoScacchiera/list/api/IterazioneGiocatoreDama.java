@@ -1,7 +1,5 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
-
 import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,17 +14,20 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
         System.out.println("-1)PER RESA");
         System.out.println("INSERIRE IL NUMERO DELLA PEDINA CHE SI VUOLE MUOVERE");
         Scanner scan = new Scanner(System.in);
-        int input =scan.nextInt();
+
+        int input =0 ;
+        do {
+             input =scan.nextInt();
+             if (!nPezziConMosse.contains(input) && input!=-1)System.out.println("PEZZO NON DISPONIBILE RIPROVA :");
+        }while (!nPezziConMosse.contains(input) && input!=-1);
+
         if(input == -1) return new Pair<>(null,new MossaResa());
-        if (nPezziConMosse.contains(input))
-        {
-            System.out.println("MOSSE DEL PEZZO SCELTE DISPONIBILI :");
-            Pezzo p = s.listaPosizionePezzi().keySet().stream().filter(e->e.getN()==input).findAny().get();
-            return new Pair<>(p,this.scegliMossaSingoloPezzo(mappaMosse,p));
-        }else {
-            System.out.println("PEZZO NON DISPONIBILE RIPROVA :");
-            return this.scegliMossa(g,s,mappaMosse);
-        }
+
+        System.out.println("MOSSE DEL PEZZO SCELTE DISPONIBILI :");
+        int finalInput = input;
+        Pezzo p = s.listaPosizionePezzi().keySet().stream().filter(e->e.getN()== finalInput).findAny().get();
+        return new Pair<>(p,this.scegliMossaSingoloPezzo(mappaMosse,p));
+
     }
 
     public Mosse scegliMossaSingoloPezzo(HashMap<Pezzo, ArrayList<Mosse>> mosse, Pezzo p){

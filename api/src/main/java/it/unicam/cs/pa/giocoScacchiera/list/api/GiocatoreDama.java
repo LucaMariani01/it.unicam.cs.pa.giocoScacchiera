@@ -1,6 +1,4 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
-
-
 import it.unicam.cs.pa.giocoScacchiera.list.lib.ColorePezzi;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.Giocatore;
 
