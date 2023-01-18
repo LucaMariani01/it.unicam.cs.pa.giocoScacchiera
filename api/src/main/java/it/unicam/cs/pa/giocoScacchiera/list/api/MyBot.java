@@ -1,0 +1,55 @@
+package it.unicam.cs.pa.giocoScacchiera.list.api;
+
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+public class MyBot implements Bot {
+    @Override
+    public Pair<Pezzo, Mosse> faiMossa(ColorePezzi c, Scacchiera s, HashMap<Pezzo, ArrayList<Mosse>> mappaMosse) {
+
+        Random random = new Random();
+        ArrayList<Integer> nPezziConMosse =  this.getArrayPezzi(mappaMosse,s,c);
+        int scelta = random.nextInt(24)+1 ;
+        if (nPezziConMosse.contains(scelta))
+        {
+            Pezzo p = s.listaPosizionePezzi().keySet().stream().filter(e->e.getN()==scelta).findAny().get();
+            Pair<Pezzo,Mosse> mossaBot = new Pair<>(p,this.muoviSingoloPezzo(mappaMosse,p));
+
+            System.out.println("IL BOT MUOVE IL PEZZO NUMERO :"+scelta +" FACENDO LA MOSSA : "+mossaBot.getValue() );
+            return mossaBot;
+        }else return this.faiMossa(c,s,mappaMosse);
+
+    }
+
+    private ArrayList<Integer> getArrayPezzi(HashMap<Pezzo, ArrayList<Mosse>> mosse, Scacchiera s, ColorePezzi c)
+    {
+        Regolamento r = new RegoleDama();
+        ArrayList<Integer> pezzi = new ArrayList<>();
+        List<Mosse> l = r.mosseColore(mosse,c);
+        for (Pezzo p : mosse.keySet()) {
+            if (mosse.get(p).size() > 0 && p.getColore().equals(c)) {
+                if (l.stream().anyMatch(e->e.getType().isMossaMangia())){
+                    if (mosse.get(p).stream().anyMatch(e -> e.getType().isMossaMangia()))pezzi.add(p.getN());
+                }else pezzi.add(p.getN());
+            }
+        }
+        return pezzi;
+    }
+
+    public Mosse muoviSingoloPezzo(HashMap<Pezzo, ArrayList<Mosse>> mosse, Pezzo p){
+        Regolamento r = new RegoleDama();
+        Random random = new Random();
+        List<Mosse> l = r.mosseColore(mosse,p.getColore());
+        List<Mosse> m;
+        if (l.stream().noneMatch(a->a.getType().isMossaMangia()))  m =mosse.get(p);
+        else m = mosse.get(p).stream().filter(e -> e.getType().isMossaMangia()).toList();
+
+        int scelta =  random.nextInt(m.size()) ;
+
+        return m.get(scelta);
+    }
+}
