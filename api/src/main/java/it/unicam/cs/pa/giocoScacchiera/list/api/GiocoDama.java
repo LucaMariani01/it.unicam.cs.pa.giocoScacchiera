@@ -68,11 +68,11 @@ public class GiocoDama implements Gioco {
     }
 
     /**
-     *  Applica i dati inseriti dell'utente
+     * Applica i dati inseriti dell'utente
+     *
      * @param p coppia pezzo, mossa
-     * @return p se la mossa non è stata effettuata
      */
-    private Pair<Pezzo,Mosse> mossaGiocatore(Pair<Pezzo,Mosse> p,Giocatore turno)
+    private void mossaGiocatore(Pair<Pezzo,Mosse> p, Giocatore turno)
     {
         IterazioneGiocatore itr = new IterazioneGiocatoreDama();
         if (p.getValue().getType() == TypeMosse.MossaResa){
@@ -83,12 +83,11 @@ public class GiocoDama implements Gioco {
                 this.scacchiera = new ScacchieraScacchi();
                 this.gameLoop();
             }
-            return p;
+            return;
         }
         if (p.getValue().getType().isMossaMangia()) {
-            if (!this.giocatoreMangia(p)) return p;
+            this.giocatoreMangia(p);
         }else this.scacchiera.spostaPezzo(p.getKey(),p.getValue().mossa(this.scacchiera.cercaPezzo(p.getKey())));
-        return null;
     }
 
     /**
