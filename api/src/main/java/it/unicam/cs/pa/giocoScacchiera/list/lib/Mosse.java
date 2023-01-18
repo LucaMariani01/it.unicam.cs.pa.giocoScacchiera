@@ -1,6 +1,8 @@
 package it.unicam.cs.pa.giocoScacchiera.list.lib;
 
 
+import it.unicam.cs.pa.giocoScacchiera.list.api.TypeMosse;
+
 public  interface  Mosse {
 
     /**

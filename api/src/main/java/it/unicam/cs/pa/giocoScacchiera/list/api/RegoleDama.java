@@ -73,7 +73,10 @@ public  class RegoleDama implements Regolamento{
             default -> null;
         };
 
-        if (s.postoVuoto(m1.mossa(s.cercaPezzo(p)))) return m1;
+        Pezzo pezzoMangiato = null;
+        if(s.statoPosizione( this.posizionePezzoMangiato(m1,s,p)).isPresent())  pezzoMangiato =s.statoPosizione( this.posizionePezzoMangiato(m1,s,p)).get();
+
+        if (s.postoVuoto(m1.mossa(s.cercaPezzo(p))) && this.possibileMangiare(pezzoMangiato,p)) return m1;
        else return null;
     }
 

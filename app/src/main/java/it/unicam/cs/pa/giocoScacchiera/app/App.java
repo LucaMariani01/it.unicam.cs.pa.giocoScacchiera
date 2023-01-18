@@ -11,7 +11,7 @@ public class App {
     public static void main(String[] args) {
 
         Giocatore g = new GiocatoreDama("LUCA", ColorePezzi.BIANCO);
-        Gioco d = new GiocoDama(g,new GiocatoreDama("BOT",ColorePezzi.NERO));
+        Gioco d = new GiocoDama(g,new GiocatoreDama("MATTEO",ColorePezzi.NERO));
         d.gameLoop();
     }
 }

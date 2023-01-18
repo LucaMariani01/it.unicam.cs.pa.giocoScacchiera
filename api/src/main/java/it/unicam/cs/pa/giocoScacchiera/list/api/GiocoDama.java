@@ -41,28 +41,26 @@ public class GiocoDama implements Gioco {
         IterazioneGiocatore itr = new IterazioneGiocatoreDama();
         this.scacchiera = this.regolamento.statoIniziale(this.scacchiera);
         Giocatore turno = this.giocatoreB;
-        Pair<Pezzo,Mosse> mossaDaRimuovere = null;//MOSSA DI CONTROLLO CHE MI ELIMINA LA MOSSA SE UNA PEDINA MANGIA LA DAMA
-        // OPPURE MOSSA CHE PUO DIVENTARE PATTA O RESA PER TERMINARE LA PARTITA
 
         while (this.regolamento.casiVittoria(this.scacchiera,this)==null)
         {
             itr.stampaScacchiera(this.scacchiera);
             this.controlloStatoPartita();
-            if (mossaDaRimuovere != null) this.mosseGiocatori.get(mossaDaRimuovere.getKey()).remove(mossaDaRimuovere.getValue());
+
             Pair<Pezzo,Mosse> p;
             if (!turno.getNome().equals("BOT")) p = itr.scegliMossa(turno,this.scacchiera,this.mosseGiocatori);
             else p = bot.faiMossa(turno.getColore(),this.scacchiera,this.mosseGiocatori);
 
-            mossaDaRimuovere = this.mossaGiocatore(p,turno);
-            if (mossaDaRimuovere == null){
-                this.mangiataMultipla(turno,p);
-                this.scacchiera.trasformaPezzo(p.getKey());
-                if (turno.getColore().isBlack()) turno =this.giocatoreB;
-                else turno =this.giocatoreN;
-            }else {
-                if (mossaDaRimuovere.getValue().getType()==TypeMosse.MossaResa) return;
+            this.mossaGiocatore(p,turno);
+            if (p.getValue().getType()==TypeMosse.MossaResa) return;
+
+            this.mangiataMultipla(turno,p);
+            this.scacchiera.trasformaPezzo(p.getKey());
+            if (turno.getColore().isBlack()) turno =this.giocatoreB;
+            else turno =this.giocatoreN;
+
             }
-        }
+
         if(itr.finePartita(this.regolamento.casiVittoria(this.scacchiera,this))==1){
             this.scacchiera = new ScacchieraScacchi();
             this.gameLoop();
