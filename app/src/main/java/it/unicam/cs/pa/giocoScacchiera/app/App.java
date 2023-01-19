@@ -4,14 +4,31 @@
 package it.unicam.cs.pa.giocoScacchiera.app;
 
 
-import it.unicam.cs.pa.giocoScacchiera.list.api.*;
-import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class App {
+import java.util.Objects;
+
+public class App extends Application {
+
+    @Override
+    public void start(Stage primo) throws Exception{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/menuIniziale.fxml")));
+        primo.setTitle("SCACCHIERA APP");
+        primo.setScene(new Scene(root,360,200));
+        primo.setResizable(false);
+        primo.show();
+    }
     public static void main(String[] args) {
 
+        /*
         Giocatore g = new GiocatoreDama("LUCA", ColorePezzi.BIANCO);
-        Gioco d = new GiocoDama(g,new GiocatoreDama("MATTEO",ColorePezzi.NERO));
-        d.gameLoop();
+        Gioco d = new GiocoDama(g,new GiocatoreDama("BOT",ColorePezzi.NERO));
+        d.gameLoop();*/
+
+        launch(args);
     }
 }

@@ -4,11 +4,11 @@
 
 plugins {
     id 'it.unicam.cs.pa.giocoScacchiera.java-library-conventions'
-    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 javafx{
     modules =['javafx.controls','javafx.fxml']
-    version ='11.0.2'
+    version ='19'
 
 }

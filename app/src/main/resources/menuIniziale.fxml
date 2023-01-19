@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.pa.giocoScacchiera.app.menuController">
+   <children>
+      <Label layoutX="119.0" layoutY="14.0" text="Gioco scacchiera" />
+      <Button fx:id="dama" layoutX="76.0" layoutY="136.0" mnemonicParsing="false" onAction="#giocoDama" text="Dama" />
+      <Button layoutX="203.0" layoutY="136.0" mnemonicParsing="false" onAction="#giocoScacchi" text="Scacchi" />
+      <Label layoutX="123.0" layoutY="61.0" text="SCEGLI GIOCO:" />
+   </children>
+</Pane>
