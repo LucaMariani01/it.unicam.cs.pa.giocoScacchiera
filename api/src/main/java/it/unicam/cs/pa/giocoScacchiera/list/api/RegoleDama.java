@@ -21,7 +21,6 @@ public  class RegoleDama implements Regolamento{
         }
         return null;
     }
-
     @Override
     public Scacchiera statoIniziale(Scacchiera s) {
 
@@ -56,8 +55,7 @@ public  class RegoleDama implements Regolamento{
     }
 
     /**
-     * Funzione di aiuto al calcolo delle mosse che permette di calcolare le mosse
-     * in cui un pezzo mangerebbe un altro
+     * Funzione di aiuto al calcolo delle mosse che permette di calcolare le mosseMangia
      * @param m mossa di partenza
      * @param s stato scacchiera
      * @param p pezzo da spostare
@@ -74,9 +72,9 @@ public  class RegoleDama implements Regolamento{
         };
 
         Pezzo pezzoMangiato = null;
-        if(s.statoPosizione( this.posizionePezzoMangiato(m1,s,p)).isPresent())  pezzoMangiato =s.statoPosizione( this.posizionePezzoMangiato(m1,s,p)).get();
+        if(s.statoPosizione( this.posizionePezzoMangiato(Objects.requireNonNull(m1),s,p)).isPresent())  pezzoMangiato =s.statoPosizione( this.posizionePezzoMangiato(m1,s,p)).get();
 
-        if (s.postoVuoto(m1.mossa(s.cercaPezzo(p))) && this.possibileMangiare(pezzoMangiato,p)) return m1;
+        if (s.postoVuoto(m1.mossa(s.cercaPezzo(p))) && this.possibileMangiare(Objects.requireNonNull(pezzoMangiato),p)) return m1;
        else return null;
     }
 
@@ -136,7 +134,6 @@ public  class RegoleDama implements Regolamento{
         return a;
     }
 
-
     public boolean possibileMangiare(Pezzo rimosso,Pezzo pezzoEating)
     {
         if( rimosso.getNomePezzo().equals(NomePezzi.PEDINA) || pezzoEating.getNomePezzo().equals(NomePezzi.DAMA)) return true;
@@ -172,5 +169,34 @@ public  class RegoleDama implements Regolamento{
         return l;
     }
 
+    @Override
+    public Scacchiera gestisciMosseGiocatore(Scacchiera s, Pair<Pezzo, Mosse> p, Giocatore turno,Gioco g) {
+        IterazioneGiocatore itr = new IterazioneGiocatoreDama();
+        if (p.getValue().getType() == TypeMosse.MossaResa){
+            int n;
+            if (turno.getColore().isBlack()) n = itr.finePartita(g.getGiocatoreB());
+            else n = itr.finePartita(g.getGiocatoreN());
+            if (n == 1){
+                s = new ScacchieraScacchi();
+                g.gameLoop();
+            }
+            return s;
+        }
+        if (p.getValue().getType().isMossaMangia()) {
+            this.giocatoreMangia(p,s);
+        }else s.spostaPezzo(p.getKey(),p.getValue().mossa(s.cercaPezzo(p.getKey())));
+        return s;
+    }
 
+    public boolean giocatoreMangia(Pair<Pezzo,Mosse> p,Scacchiera s)
+    {
+        if(this.possibileMangiare(
+                s.statoPosizione(this.posizionePezzoMangiato(p.getValue(),s,p.getKey())).get()
+                ,p.getKey()) && s.statoPosizione(this.posizionePezzoMangiato(p.getValue(),s,p.getKey())).isPresent())
+        {
+            s.mangiaPezzo(this.posizionePezzoMangiato(p.getValue(),s,p.getKey()));
+            s.spostaPezzo(p.getKey(),p.getValue().mossa(s.cercaPezzo(p.getKey())));
+            return true;
+        }else return false;
+    }
 }

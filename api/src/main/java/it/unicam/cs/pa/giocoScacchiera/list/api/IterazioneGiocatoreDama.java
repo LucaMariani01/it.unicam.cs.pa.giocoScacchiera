@@ -88,14 +88,6 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
 
 
     @Override
-    public  Boolean rispostaPatta(Giocatore g) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\n Giocatore :"+g.getNome()+" accetti il pareggio? [TRUE = SI ], resto = NO");
-        return scanner.hasNextBoolean();
-    }
-
-    @Override
     public int finePartita(Giocatore g) {
         System.out.println("\nCOMPLIMENTI IL GIOCATORE :"+ g.getNome()+" HA VINTO LA PARTITA");
 

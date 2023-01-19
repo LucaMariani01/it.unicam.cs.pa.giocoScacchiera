@@ -20,7 +20,7 @@ public interface IterazioneGiocatore {
      * @param mosse insieme delle mosse
      * @param s stato scacchiera
      * @param g giocatore che deve scegliere
-     * @return Array con tutte le mosse del giocatore
+     * @return Array con l'indice di tutti i pezzi che si puo muovere del giocatore
      */
     public ArrayList<Integer> stampaMosseDisponibili(HashMap<Pezzo, ArrayList<Mosse>> mosse,Scacchiera s,Giocatore g);
 
@@ -38,12 +38,6 @@ public interface IterazioneGiocatore {
      * @return Mossa scelta
      */
     public Mosse scegliMossaSingoloPezzo(HashMap<Pezzo, ArrayList<Mosse>> mosse, Pezzo p);
-    /**
-     *
-     * @param g giocatore che deve accettare o meno
-     * @return true se accetta la patta
-     */
-    public  Boolean rispostaPatta(Giocatore g);
 
     /**
      * Termina la partita e chiede se la si vuole rigiocare

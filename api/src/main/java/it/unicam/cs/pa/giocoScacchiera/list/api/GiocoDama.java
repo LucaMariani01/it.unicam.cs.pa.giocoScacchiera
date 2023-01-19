@@ -51,7 +51,7 @@ public class GiocoDama implements Gioco {
             if (!turno.getNome().equals("BOT")) p = itr.scegliMossa(turno,this.scacchiera,this.mosseGiocatori);
             else p = bot.faiMossa(turno.getColore(),this.scacchiera,this.mosseGiocatori);
 
-            this.mossaGiocatore(p,turno);
+            this.scacchiera = this.regolamento.gestisciMosseGiocatore(this.scacchiera,p,turno,this);
             if (p.getValue().getType()==TypeMosse.MossaResa) return;
 
             this.mangiataMultipla(turno,p);
@@ -66,47 +66,6 @@ public class GiocoDama implements Gioco {
             this.gameLoop();
         }
     }
-
-    /**
-     * Applica i dati inseriti dell'utente
-     *
-     * @param p coppia pezzo, mossa
-     */
-    private void mossaGiocatore(Pair<Pezzo,Mosse> p, Giocatore turno)
-    {
-        IterazioneGiocatore itr = new IterazioneGiocatoreDama();
-        if (p.getValue().getType() == TypeMosse.MossaResa){
-            int n;
-            if (turno.getColore().isBlack()) n = itr.finePartita(this.giocatoreB);
-            else n = itr.finePartita(this.giocatoreN);
-            if (n == 1){
-                this.scacchiera = new ScacchieraScacchi();
-                this.gameLoop();
-            }
-            return;
-        }
-        if (p.getValue().getType().isMossaMangia()) {
-            this.giocatoreMangia(p);
-        }else this.scacchiera.spostaPezzo(p.getKey(),p.getValue().mossa(this.scacchiera.cercaPezzo(p.getKey())));
-    }
-
-    /**
-     * 
-     * @param p coppia PEZZO MOSSA
-     * @return true se il giocatore puo mangiare
-     */
-    private boolean giocatoreMangia(Pair<Pezzo,Mosse> p)
-    {
-        if(this.regolamento.possibileMangiare(
-                this.scacchiera.statoPosizione(this.regolamento.posizionePezzoMangiato(p.getValue(),this.scacchiera,p.getKey())).get()
-                ,p.getKey()) && this.scacchiera.statoPosizione(this.regolamento.posizionePezzoMangiato(p.getValue(),this.scacchiera,p.getKey())).isPresent())
-        {
-            this.scacchiera.mangiaPezzo(this.regolamento.posizionePezzoMangiato(p.getValue(),this.scacchiera,p.getKey()));
-            this.scacchiera.spostaPezzo(p.getKey(),p.getValue().mossa(this.scacchiera.cercaPezzo(p.getKey())));
-            return true;
-        }else return false;
-    }
-
     /**
      * Si aziona nel momento in cui un pezzo può mangiare più volte nello stesso turno
      * @param turno il giocatore che sta muovendo in questo momento
@@ -121,7 +80,7 @@ public class GiocoDama implements Gioco {
             if (turno.getNome().equals("BOT")) p = new Pair<>(p.getKey(),bot.muoviSingoloPezzo(this.mosseGiocatori, p.getKey()));
             else p = new Pair<>(p.getKey(),itr.scegliMossaSingoloPezzo(this.mosseGiocatori, p.getKey()));
 
-            if (!this.giocatoreMangia(p)) p = new Pair<>(p.getKey(),null);
+            if (!this.regolamento.giocatoreMangia(p,this.scacchiera)) p = new Pair<>(p.getKey(),null);
         }
     }
 

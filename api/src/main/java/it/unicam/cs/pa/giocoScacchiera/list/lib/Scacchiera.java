@@ -64,7 +64,7 @@ public interface Scacchiera {
     public void rimuoviPezzo(Pezzo p);
 
     /**
-     * Aggiunge un pezzo dalla scacchiera
+     * Aggiunge un pezzo alla scacchiera
      * @param p pezzo da inserire
      * @param pos posizione pezzo
      * @return true se è andato tutto a buon fine
@@ -72,8 +72,7 @@ public interface Scacchiera {
     public Boolean aggiungiPezzo(Pezzo p, Posizione pos);
 
     /**
-     * Durante una partita in determinate condizioni è possibile che un tuo pezzo venga scambiato
-     *per un altro
+     *Trasforma un pezzo un pezzo in un altro in determinate condizioni
      * @param p pezzo
      * @return true se il pezzo è stato trasformato
      */

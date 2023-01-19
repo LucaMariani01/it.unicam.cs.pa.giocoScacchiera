@@ -9,7 +9,7 @@ package it.unicam.cs.pa.giocoScacchiera.list.lib;
 public interface Gioco {
 
     /**
-     * Ricalcola tutte le mosse disponibili dei due giocatori
+     * Calcola tutte le mosse disponibili dei due giocatori
      */
     public void controlloStatoPartita();
 

@@ -23,7 +23,7 @@ public  interface  Regolamento {
     public Scacchiera statoIniziale(Scacchiera s);
 
     /**
-     * Metodo che dice chi tocca a muovere in un dato momento della partita
+     * Regola a chi sta la mossa in quel momento della partita
      * @param g Giocatore che muove in quel turno
      * @param coppia che rappresenta il pezzo e la mossa da fare su di esso
      * @param s stato scacchiera
@@ -33,7 +33,7 @@ public  interface  Regolamento {
 
 
     /**
-     * calcola le mosse possibili di tutti i pezzi presenti nella scacchiera
+     * Regola che calcola le mosse possibili di tutti i pezzi presenti nella scacchiera
      * @param s scacchiera
      * @return  pezzo con ogni mossa che esso puo fare in quel momento nella scacchiera
      */
@@ -57,14 +57,35 @@ public  interface  Regolamento {
     public Posizione posizionePezzoMangiato(Mosse m, Scacchiera s, Pezzo p);
 
     /**
-     * Controlla se un pezzo può effettivamente mangiare un altro pezzo
+     * Regola che definisce se un pezzo può effettivamente mangiare un altro pezzo
      * @param rimosso pezzo che viene mangiato
      * @param pezzoEating pezzo che mangia
      * @return true se può mangiare
      */
     public boolean possibileMangiare(Pezzo rimosso,Pezzo pezzoEating);
 
+    /**
+     * Restituisce tutte le mosse dei pezzi del colore passato
+     * @param m tutte le mosse
+     * @param c colore dei pezzi
+     * @return lista di mosse
+     */
     public List<Mosse> mosseColore(HashMap<Pezzo,ArrayList<Mosse>> m, ColorePezzi c);
 
+    /**
+     * Quando il giocatore muove ricalcola il nuovo stato della scacchiera
+     * @param s coppia Pezzo, Mossa
+     * @param p coppia Pezzo, Mossa
+     * @param turno Giocatore che muove
+     * @return scacchiera ricalcolata
+     */
+    public Scacchiera gestisciMosseGiocatore(Scacchiera s,Pair<Pezzo,Mosse> p, Giocatore turno,Gioco g);
 
+    /**
+     * Regola che gestisce il momento che un giocatore mangia nella scacchiera
+     * @param p coppia Pezzo, Mossa
+     * @param s coppia Pezzo, Mossa
+     * @return scacchiera ricalcolata dopo la mossa
+     */
+    public boolean giocatoreMangia(Pair<Pezzo,Mosse> p,Scacchiera s);
 }

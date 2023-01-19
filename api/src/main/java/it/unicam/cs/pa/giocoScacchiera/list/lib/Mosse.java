@@ -6,8 +6,7 @@ import it.unicam.cs.pa.giocoScacchiera.list.api.TypeMosse;
 public  interface  Mosse {
 
     /**
-     * Data la posizione iniziale, calcola a seconda del pezzo
-     * in quella posizione la nuova posizione nell scacchiera
+     * Data la posizione iniziale, calcola  la nuova posizione nell scacchiera
      * @param p posizione corrente
      * @return la nuova posizione
      */
