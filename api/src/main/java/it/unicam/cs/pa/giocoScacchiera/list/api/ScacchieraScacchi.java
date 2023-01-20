@@ -4,12 +4,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+
+/**
+ *Classe che definisce una scacchiera di scacchi
+ */
 public class ScacchieraScacchi implements Scacchiera {
+    /**
+     * Mappa Pezzo -> Posizione
+     */
     private final Map<Pezzo, Posizione> posizionePezzi;
+    /**
+     *Matrice di Optional Pezzi (Option.empty se il posto è vuoto)
+     */
     private final ArrayList<ArrayList<Optional<Pezzo>>> scacchiera;
+    /**
+     *Array di pezzi che non sono più nella scacchiera
+     */
     private final ArrayList<Pezzo> pezziMangiati;
 
-
+    /**
+     *Costruttore
+     */
     public  ScacchieraScacchi(){
         this.posizionePezzi = new HashMap<>();
         this.scacchiera = new ArrayList<>();
@@ -21,9 +36,7 @@ public class ScacchieraScacchi implements Scacchiera {
         {
             for (int j = 0 ; j<8;j++) this.scacchiera.get(i).add(j,Optional.empty());
         }
-
     }
-
 
     @Override
     public Map<Pezzo, Posizione> listaPosizionePezzi() {
@@ -42,10 +55,8 @@ public class ScacchieraScacchi implements Scacchiera {
 
     @Override
     public void spostaPezzo(Pezzo p, Posizione pos) {
-
        this.rimuoviPezzo(p);
-        this.aggiungiPezzo(p, pos);
-
+       this.aggiungiPezzo(p, pos);
     }
 
     @Override
@@ -67,16 +78,13 @@ public class ScacchieraScacchi implements Scacchiera {
 
     @Override
     public Optional<Pezzo> mangiaPezzo(Posizione p) {
-
         Optional<Pezzo> rimosso = this.statoPosizione(p);
-
         if(rimosso.isPresent() ){
                 this.rimuoviPezzo(rimosso.get());
                 this.pezziMangiati.add(rimosso.get());
                 return rimosso;
         }
         return Optional.empty();
-
     }
 
     @Override
@@ -91,7 +99,6 @@ public class ScacchieraScacchi implements Scacchiera {
     @Override
     public Boolean aggiungiPezzo(Pezzo p, Posizione pos) {
         if (!this.postoVuoto(pos)) return false;
-
         this.scacchiera.get(pos.y()).set(pos.x(),Optional.of(p));
         this.posizionePezzi.put(p,pos);
 

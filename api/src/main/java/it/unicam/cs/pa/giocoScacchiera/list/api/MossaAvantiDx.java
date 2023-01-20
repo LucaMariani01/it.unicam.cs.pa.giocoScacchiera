@@ -1,8 +1,15 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+
+/**
+ * Classe che calcola la posizione avanti a destra
+ */
 public class MossaAvantiDx extends MossaDama{
 
+    /**
+     * Costruttore
+     */
     public MossaAvantiDx(){
         this.tipo = TypeMosse.MossaAvantiDx;
     }

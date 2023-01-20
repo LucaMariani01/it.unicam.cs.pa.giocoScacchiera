@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+
+/**
+ *Classe che definisce le regole della dama
+ */
 public  class RegoleDama implements Regolamento{
     @Override
     public Giocatore casiVittoria(Scacchiera s, Gioco g ) {
@@ -55,11 +59,11 @@ public  class RegoleDama implements Regolamento{
     }
 
     /**
-     * Funzione di aiuto al calcolo delle mosse che permette di calcolare le mosseMangia
-     * @param m mossa di partenza
-     * @param s stato scacchiera
-     * @param p pezzo da spostare
-     * @return la nuova mossa o null se la posizione è occupata
+     *Metodo di aiuto al calcolo delle mosse che permette di calcolare le mosseMangia
+     *@param m mossa di partenza
+     *@param s stato scacchiera
+     *@param p pezzo da spostare
+     *@return la nuova mossa o null se la posizione è occupata
      */
     private Mosse casoEat(Mosse m,Scacchiera s,Pezzo p) {
 
@@ -88,12 +92,12 @@ public  class RegoleDama implements Regolamento{
     }
 
     /**
-     * Controlla se una mossa è valida o no e se è possibile effettuare una mossa che mangi un
-     * pezzo dell'avversario (metodo di aiuto al metodo di calcolo mosse)
-     * @param m mossa da controllare la validità
-     * @param s stato corrente scacchiera
-     * @param p pezzo da spostare nella scacchiera
-     * @return m se la mossa è valida o la c
+     *Controlla se una mossa è valida o no e se è possibile effettuare una mossa che mangi un
+     *pezzo dell'avversario (metodo di aiuto al metodo di calcolo mosse)
+     *@param m mossa da controllare la validità
+     *@param s stato corrente scacchiera
+     *@param p pezzo da spostare nella scacchiera
+     *@return m se la mossa è valida o la c
      */
     private Mosse mossaValida(Mosse m,Scacchiera s, Pezzo p)
     {
@@ -133,7 +137,7 @@ public  class RegoleDama implements Regolamento{
         }
         return a;
     }
-
+    @Override
     public boolean possibileMangiare(Pezzo rimosso,Pezzo pezzoEating)
     {
         if( rimosso.getNomePezzo().equals(NomePezzi.PEDINA) || pezzoEating.getNomePezzo().equals(NomePezzi.DAMA)) return true;
@@ -171,7 +175,7 @@ public  class RegoleDama implements Regolamento{
 
     @Override
     public Scacchiera gestisciMosseGiocatore(Scacchiera s, Pair<Pezzo, Mosse> p, Giocatore turno,Gioco g) {
-        IterazioneGiocatore itr = new IterazioneGiocatoreDama();
+        IterazioneGiocatore itr = new DashBoardUtente();
         if (p.getValue().getType() == TypeMosse.MossaResa){
             int n;
             if (turno.getColore().isBlack()) n = itr.finePartita(g.getGiocatoreB());
@@ -187,7 +191,7 @@ public  class RegoleDama implements Regolamento{
         }else s.spostaPezzo(p.getKey(),p.getValue().mossa(s.cercaPezzo(p.getKey())));
         return s;
     }
-
+    @Override
     public boolean giocatoreMangia(Pair<Pezzo,Mosse> p,Scacchiera s)
     {
         if(this.possibileMangiare(

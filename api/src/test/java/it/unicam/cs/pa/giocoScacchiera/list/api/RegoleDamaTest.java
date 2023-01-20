@@ -1,15 +1,17 @@
-package it.unicam.cs.pa.giocoScacchiera.list;
-
+package it.unicam.cs.pa.giocoScacchiera.list.api;
 import it.unicam.cs.pa.giocoScacchiera.list.api.*;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test del corretto comportamento del regolamento
+ */
 class RegoleDamaTest {
-
+    /**
+     * Test dei casi di vittorie del giocatore
+     */
     @Test
     void casiVittoria() {
         Regolamento r = new RegoleDama();
@@ -39,6 +41,9 @@ class RegoleDamaTest {
 
     }
 
+    /**
+     * Test del corretto calcolo della posizione iniziale nella scacchiera
+     */
     @Test
     void statoIniziale() {
         Scacchiera s = new ScacchieraScacchi();
@@ -74,12 +79,9 @@ class RegoleDamaTest {
         }
     }
 
-
-    @Test
-    void gestioneTurno() {
-
-    }
-
+    /**
+     * Test del corretto calcolo delle mosse
+     */
     @Test
     void calcoloMosseTest() {
         Scacchiera s = new ScacchieraScacchi();
@@ -111,9 +113,11 @@ class RegoleDamaTest {
 
         m = r.calcoloMossePezzo(s,p2);
         assertEquals(attese,m);
-
     }
 
+    /**
+     * Test che controlla che il calcolo della possibilità di mangiare sia corretto
+     */
     @Test
     void possibileMangiare() {
         Regolamento r = new RegoleDama();
@@ -127,6 +131,9 @@ class RegoleDamaTest {
 
     }
 
+    /**
+     * Test sul metodo che calcola la posizione del pezzo mangiato
+     */
     @Test
     void posizionePezzoMangiato() {
         Scacchiera s = new ScacchieraScacchi();

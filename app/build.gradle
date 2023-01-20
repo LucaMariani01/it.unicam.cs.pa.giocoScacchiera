@@ -20,5 +20,8 @@ application {
 javafx{
     modules =['javafx.controls','javafx.fxml']
     version ='19'
+}
 
+run{
+    standardInput = System.in;
 }

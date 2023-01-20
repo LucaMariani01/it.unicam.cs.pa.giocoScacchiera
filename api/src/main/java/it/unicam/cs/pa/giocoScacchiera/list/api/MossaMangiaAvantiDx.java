@@ -1,8 +1,15 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
-public class MossaMangiaAvantiDx extends MossaDama {
 
+/**
+ * Classe che calcola la posizione in caso la pedina mangi
+ * avanti a destra
+ */
+public class MossaMangiaAvantiDx extends MossaDama {
+    /**
+     * Costruttore
+     */
     public MossaMangiaAvantiDx() {
         this.tipo = TypeMosse.MossaMangiaAvantiDx;
     }

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Definisce quello che ogni scacchiera deve fare
+ */
 public interface Scacchiera {
 
     /**

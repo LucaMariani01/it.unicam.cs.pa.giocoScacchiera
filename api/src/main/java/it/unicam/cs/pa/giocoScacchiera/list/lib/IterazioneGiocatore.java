@@ -5,13 +5,16 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * definisce come si deve gestire l'utente
+ */
 public interface IterazioneGiocatore {
     /**
      * Metodo che permette al giocatore di effettuare una mossa
      * @param g giocatore che muove
      * @param s stato scacchiera
      * @param m mosse disponibili
-     * @return coppia<Pezzo da muovere, Mossa scelta>
+     * @return coppia Pezzo da muovere, Mossa scelta
      */
     public Pair<Pezzo,Mosse> scegliMossa(Giocatore g, Scacchiera s, HashMap<Pezzo, ArrayList<Mosse>> m);
 

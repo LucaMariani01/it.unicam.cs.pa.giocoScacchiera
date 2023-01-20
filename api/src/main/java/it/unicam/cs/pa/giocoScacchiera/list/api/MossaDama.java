@@ -2,12 +2,23 @@ package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 import java.util.Objects;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+
+/**
+ * Classe astratta che implementa i le parti di codice
+ * comuni tra le varie mosse
+ */
 public  abstract class MossaDama implements Mosse {
-
+    /**
+     * Tipologia della mossa
+     */
     protected TypeMosse tipo;
-
+    @Override
     public abstract Posizione mossa(Posizione p);
 
+    /**
+     * Metodo che ti dice che mossa è
+     * @return Type della Mossa
+     */
     public  TypeMosse getType()
     {
         return this.tipo;

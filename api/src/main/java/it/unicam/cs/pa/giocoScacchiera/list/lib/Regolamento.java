@@ -1,11 +1,16 @@
 package it.unicam.cs.pa.giocoScacchiera.list.lib;
 
+import it.unicam.cs.pa.giocoScacchiera.list.api.ColorePezzi;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Contratto che ogni gioco da scacchiera che implementa
+ * questa libreria deve avere
+ */
 public  interface  Regolamento {
     /**
      * Controlla se uno dei giocatori ha vinto o meno
@@ -16,9 +21,9 @@ public  interface  Regolamento {
     public Giocatore casiVittoria(Scacchiera s,Gioco g);
 
     /**
-     *Calcola la posizione dei pezzi a inizio partita
-     * @return lo stato iniziale della scacchiera
-     *       ancora prima che siano state effettuate mosse
+     *Calcola lo stato iniziale della scacchiera per il gioco di dama
+     * @param s scacchiera da modificare
+     * @return scacchiera con le pedine posizionate
      */
     public Scacchiera statoIniziale(Scacchiera s);
 
@@ -57,10 +62,10 @@ public  interface  Regolamento {
     public Posizione posizionePezzoMangiato(Mosse m, Scacchiera s, Pezzo p);
 
     /**
-     * Regola che definisce se un pezzo può effettivamente mangiare un altro pezzo
+     * Regola che definisce se un pezzo ha il permesso effettivamente mangiare un altro pezzo
      * @param rimosso pezzo che viene mangiato
      * @param pezzoEating pezzo che mangia
-     * @return true se può mangiare
+     * @return true se mangiare
      */
     public boolean possibileMangiare(Pezzo rimosso,Pezzo pezzoEating);
 
@@ -77,6 +82,7 @@ public  interface  Regolamento {
      * @param s coppia Pezzo, Mossa
      * @param p coppia Pezzo, Mossa
      * @param turno Giocatore che muove
+     * @param g stato partita
      * @return scacchiera ricalcolata
      */
     public Scacchiera gestisciMosseGiocatore(Scacchiera s,Pair<Pezzo,Mosse> p, Giocatore turno,Gioco g);

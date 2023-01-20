@@ -1,4 +1,4 @@
-package it.unicam.cs.pa.giocoScacchiera.list;
+package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 import it.unicam.cs.pa.giocoScacchiera.list.api.*;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
@@ -9,9 +9,13 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Test della scacchiera
+ */
 class ScacchieraScacchiTest {
-
+    /**
+     * Test sulla corretto posizionamento dei pezzi
+     */
     @Test
     void listaPosizionePezzi() {
         Scacchiera s = new ScacchieraScacchi();
@@ -29,6 +33,9 @@ class ScacchieraScacchiTest {
         assertEquals(mappa,s.listaPosizionePezzi());
     }
 
+    /**
+     * Test se la lista dei pezzi mangiati calcolata correttamente
+     */
     @Test
     void listaPezziMangiati() {
         Scacchiera s = new ScacchieraScacchi();
@@ -43,6 +50,9 @@ class ScacchieraScacchiTest {
         assertEquals(listaPezzi,s.listaPezziMangiati());
     }
 
+    /**
+     * Test se il pezzo sia spostato correttamente
+     */
     @Test
     void spostaPezzo() {
         Scacchiera s = new ScacchieraScacchi();
@@ -56,10 +66,11 @@ class ScacchieraScacchiTest {
 
         s.spostaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(5,5));
         assertEquals(s.cercaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1)),new PosizionePezzo(5,5));
-
-
     }
 
+    /**
+     * Test che controlla che il pezzo cercato sia restituito il risultato corretto
+     */
     @Test
     void cercaPezzo() {
         Scacchiera s = new ScacchieraScacchi();
@@ -69,6 +80,9 @@ class ScacchieraScacchiTest {
         assertEquals(s.cercaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1)),new PosizionePezzo(1,1));
     }
 
+    /**
+     * Test che controlla che il metodo postoVuoto sia corretto
+     */
     @Test
     void postoVuoto() {
         Scacchiera s = new ScacchieraScacchi();
@@ -77,6 +91,9 @@ class ScacchieraScacchiTest {
         assertFalse(s.postoVuoto(new PosizionePezzo(0,0)));
     }
 
+    /**
+     * Test che controlla che il metodo statoPosizione sia corretto
+     */
     @Test
     void statoPosizione() {
         Scacchiera s = new ScacchieraScacchi();
@@ -86,6 +103,9 @@ class ScacchieraScacchiTest {
 
     }
 
+    /**
+     * Test che controlla che i pezzi vengano trasformati correttamente
+     */
     @Test
     void trasformaPezzo() {
         Scacchiera s = new ScacchieraScacchi();

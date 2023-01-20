@@ -8,16 +8,32 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/**
+ * Classe che ti permette di avviare una partita di dama
+ */
 public class GiocoDama implements Gioco {
-
+    /**
+     * Giocatore a cui sono assegnati i bianchi
+     */
     private final Giocatore giocatoreB;
+    /**
+     * Giocatore a cui sono assegnati i neri
+     */
     private final Giocatore giocatoreN;
+    /**
+     * Regolamento partita
+     */
     private final Regolamento regolamento;
+    /**
+     * Scacchiera dove si svolge la partita
+     */
     private Scacchiera scacchiera;
-    private HashMap<Pezzo, ArrayList<Mosse>> mosseGiocatori;
 
-
+    /**
+     * Costruttore gioco
+     * @param giocatoreB giocatore che userà le pedine bianche
+     * @param giocatoreN giocatore che userà le pedine nere
+     */
     public GiocoDama(Giocatore giocatoreB, Giocatore giocatoreN) {
 
         if (giocatoreB == null || giocatoreN == null ) throw  new NullPointerException();
@@ -25,31 +41,24 @@ public class GiocoDama implements Gioco {
         this.giocatoreB = giocatoreB;
         this.giocatoreN = giocatoreN;
         this.scacchiera = new ScacchieraScacchi() ;
-        this.mosseGiocatori = new HashMap<>();
         this.regolamento = new RegoleDama();
-    }
-
-    @Override
-    public void controlloStatoPartita() {
-        this.mosseGiocatori = this.regolamento.calcoloMossePezzi(this.scacchiera);
-
     }
 
     @Override
     public void gameLoop() {
         Bot bot = new MyBot();
-        IterazioneGiocatore itr = new IterazioneGiocatoreDama();
+        IterazioneGiocatore itr = new DashBoardUtente();
         this.scacchiera = this.regolamento.statoIniziale(this.scacchiera);
         Giocatore turno = this.giocatoreB;
 
         while (this.regolamento.casiVittoria(this.scacchiera,this)==null)
         {
             itr.stampaScacchiera(this.scacchiera);
-            this.controlloStatoPartita();
+            HashMap<Pezzo, ArrayList<Mosse>> mosseGiocatori = this.regolamento.calcoloMossePezzi(this.scacchiera);
 
             Pair<Pezzo,Mosse> p;
-            if (!turno.getNome().equals("BOT")) p = itr.scegliMossa(turno,this.scacchiera,this.mosseGiocatori);
-            else p = bot.faiMossa(turno.getColore(),this.scacchiera,this.mosseGiocatori);
+            if (!turno.getNome().equals("BOT")) p = itr.scegliMossa(turno,this.scacchiera,mosseGiocatori);
+            else p = bot.faiMossa(turno.getColore(),this.scacchiera,mosseGiocatori);
 
             this.scacchiera = this.regolamento.gestisciMosseGiocatore(this.scacchiera,p,turno,this);
             if (p.getValue().getType()==TypeMosse.MossaResa) return;
@@ -67,18 +76,18 @@ public class GiocoDama implements Gioco {
         }
     }
     /**
-     * Si aziona nel momento in cui un pezzo può mangiare più volte nello stesso turno
+     * Si aziona nel momento in cui un pezzo deve mangiare più volte nello stesso turno
      * @param turno il giocatore che sta muovendo in questo momento
      * @param p coppia di valore che indica il pezzo da muovere e la mossa da fare
      */
     private void mangiataMultipla(Giocatore turno,Pair<Pezzo,Mosse> p){
-        IterazioneGiocatore itr = new IterazioneGiocatoreDama();
+        IterazioneGiocatore itr = new DashBoardUtente();
         Bot bot = new MyBot();
         while (this.regolamento.gestioneTurno(turno,p,this.scacchiera) == turno.getColore()){
 
-            this.controlloStatoPartita();
-            if (turno.getNome().equals("BOT")) p = new Pair<>(p.getKey(),bot.muoviSingoloPezzo(this.mosseGiocatori, p.getKey()));
-            else p = new Pair<>(p.getKey(),itr.scegliMossaSingoloPezzo(this.mosseGiocatori, p.getKey()));
+            HashMap<Pezzo, ArrayList<Mosse>> mosseGiocatori = this.regolamento.calcoloMossePezzi(this.scacchiera);
+            if (turno.getNome().equals("BOT")) p = new Pair<>(p.getKey(),bot.muoviSingoloPezzo(mosseGiocatori, p.getKey()));
+            else p = new Pair<>(p.getKey(),itr.scegliMossaSingoloPezzo(mosseGiocatori, p.getKey()));
 
             if (!this.regolamento.giocatoreMangia(p,this.scacchiera)) p = new Pair<>(p.getKey(),null);
         }

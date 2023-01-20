@@ -1,8 +1,12 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 
+/**
+ * record che mi definisce la posizione nell scacchiera
+ * @param x valore asse x
+ * @param y valore asse y
+ */
 public record PosizionePezzo(int x, int y) implements Posizione {
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

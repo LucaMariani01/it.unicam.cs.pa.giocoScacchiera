@@ -1,12 +1,17 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
-public class MossaDietroSx extends MossaDama {
 
+/**
+ * Classe che calcola la posizione dietro a sinistra
+ */
+public class MossaDietroSx extends MossaDama {
+    /**
+     * Costruttore
+     */
     public MossaDietroSx() {
         this.tipo = TypeMosse.MossaDietroSx;
     }
-
     @Override
     public Posizione mossa(Posizione p) {
 

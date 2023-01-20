@@ -7,13 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
+
+/**
+ * Classe che permette al computer di compiere mosse
+ */
 public class MyBot implements Bot {
     @Override
     public Pair<Pezzo, Mosse> faiMossa(ColorePezzi c, Scacchiera s, HashMap<Pezzo, ArrayList<Mosse>> mappaMosse) {
 
         Random random = new Random();
-        ArrayList<Integer> nPezziConMosse =  this.getArrayPezzi(mappaMosse,s,c);
-        int scelta = random.nextInt(24)+1 ;
+        ArrayList<Integer> nPezziConMosse =  this.getArrayPezzi(mappaMosse, c);
+        int scelta ;
         do {
             scelta = random.nextInt(24)+1 ;
         }while (!nPezziConMosse.contains(scelta));
@@ -24,11 +28,15 @@ public class MyBot implements Bot {
 
         System.out.println("IL BOT MUOVE IL PEZZO NUMERO :"+scelta +" FACENDO LA MOSSA : "+mossaBot.getValue() );
         return mossaBot;
-
-
     }
 
-    private ArrayList<Integer> getArrayPezzi(HashMap<Pezzo, ArrayList<Mosse>> mosse, Scacchiera s, ColorePezzi c)
+    /**
+     * Mostra i pezzi che il bot deve muovere
+     * @param mosse tutte le mosse disponibili
+     * @param c colore dei pezzi che si muove
+     * @return array con l'indice dei pezzi disponibili
+     */
+    private ArrayList<Integer> getArrayPezzi(HashMap<Pezzo, ArrayList<Mosse>> mosse, ColorePezzi c)
     {
         Regolamento r = new RegoleDama();
         ArrayList<Integer> pezzi = new ArrayList<>();
@@ -42,7 +50,7 @@ public class MyBot implements Bot {
         }
         return pezzi;
     }
-
+    @Override
     public Mosse muoviSingoloPezzo(HashMap<Pezzo, ArrayList<Mosse>> mosse, Pezzo p){
         Regolamento r = new RegoleDama();
         Random random = new Random();

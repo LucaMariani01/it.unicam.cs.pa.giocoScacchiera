@@ -2,15 +2,19 @@ package it.unicam.cs.pa.giocoScacchiera.app;
 
 import it.unicam.cs.pa.giocoScacchiera.list.api.GiocatoreDama;
 import it.unicam.cs.pa.giocoScacchiera.list.api.GiocoDama;
-import it.unicam.cs.pa.giocoScacchiera.list.lib.ColorePezzi;
+import it.unicam.cs.pa.giocoScacchiera.list.api.ColorePezzi;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.Gioco;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.Scanner;
 
+/**
+ * Classe controller del menu iniziale
+ */
 public class menuController {
+    /**
+     *  Fa partire una nuova partita di dama
+     * @param actionEvent evento
+     */
     public void giocoDama(javafx.event.ActionEvent actionEvent) {
         Scanner s = new Scanner(System.in);
 
@@ -30,6 +34,10 @@ public class menuController {
 
     }
 
+    /**
+     *  Fa partire una nuova partita di scacchi
+     * @param actionEvent evento
+     */
     public void giocoScacchi(javafx.event.ActionEvent actionEvent) {
         System.out.println("Scacchi sarà inserito al prossimo aggiornamento");
     }

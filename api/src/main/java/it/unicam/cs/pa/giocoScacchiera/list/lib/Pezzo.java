@@ -1,6 +1,10 @@
 package it.unicam.cs.pa.giocoScacchiera.list.lib;
+import it.unicam.cs.pa.giocoScacchiera.list.api.ColorePezzi;
 import it.unicam.cs.pa.giocoScacchiera.list.api.NomePezzi;
 
+/**
+ * definisce cio che ogni pezzo nella scacchiera deve fare
+ */
 public interface Pezzo {
 
     /**
@@ -16,10 +20,9 @@ public interface Pezzo {
      */
     public ColorePezzi getColore();
 
-
-
     /**
-     * return il nome del pezzo
+     * Restituisce il nome del pezzo
+     * @return NomePezzi
      */
     public NomePezzi getNomePezzo();
 

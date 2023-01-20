@@ -5,7 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
-public class IterazioneGiocatoreDama implements IterazioneGiocatore {
+
+/**
+ * Classe che gestisce le stampe e i vari input dell'utente
+ */
+public class DashBoardUtente implements IterazioneGiocatore {
     @Override
     public Pair<Pezzo, Mosse> scegliMossa(Giocatore g, Scacchiera s, HashMap<Pezzo, ArrayList<Mosse>> mappaMosse) {
 
@@ -37,6 +41,7 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
 
     }
 
+    @Override
     public Mosse scegliMossaSingoloPezzo(HashMap<Pezzo, ArrayList<Mosse>> mosse, Pezzo p){
         Regolamento r = new RegoleDama();
         Scanner scan = new Scanner(System.in);
@@ -62,8 +67,6 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
 
         return m.get(input-1);
     }
-
-
 
     @Override
     public ArrayList<Integer> stampaMosseDisponibili(HashMap<Pezzo, ArrayList<Mosse>> mosse, Scacchiera s, Giocatore g) {
@@ -102,7 +105,7 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
 
     @Override
     public int finePartita(Giocatore g) {
-        System.out.println("\nCOMPLIMENTI IL GIOCATORE :"+ g.getNome()+" HA VINTO LA PARTITA");
+        System.out.println("\nCOMPLIMENTI IL GIOCATORE :"+ g.getNome()+" CON COLORE 0"+g.getColore()+" HA VINTO LA PARTITA");
 
         System.out.println("\n VOLETE RIGIOCARE UN'ALTRA PARITA ?? \n DIGITA 1 PER SI ALTRO PER NO");
         Scanner scanner = new Scanner(System.in);

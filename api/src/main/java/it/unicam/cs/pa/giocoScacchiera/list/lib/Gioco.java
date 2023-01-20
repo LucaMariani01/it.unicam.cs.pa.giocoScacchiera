@@ -2,19 +2,14 @@ package it.unicam.cs.pa.giocoScacchiera.list.lib;
 
 
 /**
- * interfaccia che definisce il loopGAME
+ * Interfaccia che definisce il gioco
  * e fa comunicare il giocatore con la scacchiera
  * e segue le direttive del regolamento
  */
 public interface Gioco {
 
     /**
-     * Calcola tutte le mosse disponibili dei due giocatori
-     */
-    public void controlloStatoPartita();
-
-    /**
-     * loop del gioco
+     * Loop del gioco
      */
     public void gameLoop();
 
