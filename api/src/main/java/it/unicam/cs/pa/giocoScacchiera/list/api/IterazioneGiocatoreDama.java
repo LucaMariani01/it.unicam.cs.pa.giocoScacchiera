@@ -15,9 +15,16 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
         System.out.println("INSERIRE IL NUMERO DELLA PEDINA CHE SI VUOLE MUOVERE");
         Scanner scan = new Scanner(System.in);
 
-        int input =0 ;
+        int input  ;
         do {
-             input =scan.nextInt();
+            try {
+                input =scan.nextInt();
+            }catch (Exception e)
+            {
+                System.out.println("CARATTERI NON VALIDI ");
+                return this.scegliMossa(g,s,mappaMosse);
+            }
+
              if (!nPezziConMosse.contains(input) && input!=-1)System.out.println("PEZZO NON DISPONIBILE RIPROVA :");
         }while (!nPezziConMosse.contains(input) && input!=-1);
 
@@ -43,7 +50,13 @@ public class IterazioneGiocatoreDama implements IterazioneGiocatore {
         System.out.println("INSERIRE IL NUMERO DELLA MOSSA DEL PEZZO : "+p);
         int input ;
         do {
-            input = scan.nextInt();
+            try {
+                input =scan.nextInt();
+            }catch (Exception e)
+            {
+                System.out.println("CARATTERI NON VALIDI ");
+                return this.scegliMossaSingoloPezzo(mosse,p);
+            }
             if (input-1<0 || input-1>=m.size())System.out.println("VALORE INSERITO NON VALIDO \n RIPROVA:");
         } while (input-1<0 || input-1>=m.size());
 

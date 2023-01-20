@@ -24,7 +24,9 @@ public class menuController {
 
         Gioco g = new GiocoDama(new GiocatoreDama(nomeGiocatoreBianco, ColorePezzi.BIANCO),new GiocatoreDama(nomeGiocatoreNERO,ColorePezzi.NERO));
 
-        g.gameLoop();
+        try {
+            g.gameLoop();
+        }catch (Exception ignored){}
 
     }
 
