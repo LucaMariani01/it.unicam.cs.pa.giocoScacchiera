@@ -1,7 +1,7 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 /**
- * colore dei pezzi nella Scacchiera
+ * colore dei pezzi nella scacchiera
  */
 public enum ColorePezzi {
     /**
@@ -14,7 +14,7 @@ public enum ColorePezzi {
     NERO;
 
     /**
-     * controlla se il colore sia bianco
+     * Controlla se il colore sia bianco
      * @return true se il colore è bianco
      */
     public boolean isWhite(){
@@ -23,7 +23,7 @@ public enum ColorePezzi {
     }
 
     /**
-     * controlla che un colore si nero
+     * Controlla che un colore si nero
      * @return true se è nero
      */
     public boolean isBlack(){

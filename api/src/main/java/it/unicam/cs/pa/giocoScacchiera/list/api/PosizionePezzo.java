@@ -2,7 +2,7 @@ package it.unicam.cs.pa.giocoScacchiera.list.api;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 
 /**
- * record che mi definisce la posizione nell scacchiera
+ * Record che mi definisce la posizione nella scacchiera
  * @param x valore asse x
  * @param y valore asse y
  */

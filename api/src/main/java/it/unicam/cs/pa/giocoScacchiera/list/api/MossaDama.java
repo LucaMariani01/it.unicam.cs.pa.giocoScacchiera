@@ -4,8 +4,8 @@ import java.util.Objects;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 
 /**
- * Classe astratta che implementa i le parti di codice
- * comuni tra le varie mosse
+ * Classe astratta che implementa le parti di codice
+ * in comune tra le varie mosse
  */
 public  abstract class MossaDama implements Mosse {
     /**

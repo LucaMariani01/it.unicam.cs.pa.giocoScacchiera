@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Contratto che ogni gioco da scacchiera che implementa
+ * Contratto che ogni gioco da scacchiera implementante
  * questa libreria deve avere
  */
 public  interface  Regolamento {

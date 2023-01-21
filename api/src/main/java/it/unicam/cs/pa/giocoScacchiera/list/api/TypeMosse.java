@@ -2,7 +2,7 @@ package it.unicam.cs.pa.giocoScacchiera.list.api;
 
 /**
  *Enumerazione del tipo di mosse che si possono
- * effettuare dama
+ * effettuare a dama
  */
 public enum TypeMosse {
     /**
