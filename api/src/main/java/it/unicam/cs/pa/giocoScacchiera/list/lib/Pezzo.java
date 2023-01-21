@@ -3,7 +3,7 @@ import it.unicam.cs.pa.giocoScacchiera.list.api.ColorePezzi;
 import it.unicam.cs.pa.giocoScacchiera.list.api.NomePezzi;
 
 /**
- * definisce quello che ogni pezzo nella scacchiera deve fare
+ * Definisce quello che ogni pezzo nella scacchiera deve fare
  */
 public interface Pezzo {
 
@@ -15,7 +15,7 @@ public interface Pezzo {
     public int getN();
 
     /**
-     * ritorna il colore del pezzo
+     * Ritorna il colore del pezzo
      * @return colore
      */
     public ColorePezzi getColore();

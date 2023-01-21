@@ -47,7 +47,7 @@ public class GiocoDama implements Gioco {
     @Override
     public void gameLoop() {
         Bot bot = new MyBot();
-        IterazioneGiocatore itr = new DashBoardUtente();
+        DashBoardUtente itr = new DashBoardUtenteDama();
         this.scacchiera = this.regolamento.statoIniziale(this.scacchiera);
         Giocatore turno = this.giocatoreB;
 
@@ -67,8 +67,7 @@ public class GiocoDama implements Gioco {
             this.scacchiera.trasformaPezzo(p.getKey());
             if (turno.getColore().isBlack()) turno =this.giocatoreB;
             else turno =this.giocatoreN;
-
-            }
+        }
 
         if(itr.finePartita(this.regolamento.casiVittoria(this.scacchiera,this))==1){
             this.scacchiera = new ScacchieraScacchi();
@@ -81,7 +80,7 @@ public class GiocoDama implements Gioco {
      * @param p coppia di valore che indica il pezzo da muovere e la mossa da fare
      */
     private void mangiataMultipla(Giocatore turno,Pair<Pezzo,Mosse> p){
-        IterazioneGiocatore itr = new DashBoardUtente();
+        DashBoardUtente itr = new DashBoardUtenteDama();
         Bot bot = new MyBot();
         while (this.regolamento.gestioneTurno(turno,p,this.scacchiera) == turno.getColore()){
 

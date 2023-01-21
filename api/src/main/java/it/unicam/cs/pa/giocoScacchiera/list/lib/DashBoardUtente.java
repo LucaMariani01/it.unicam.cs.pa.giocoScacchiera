@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * definisce come si deve gestire l'utente
  */
-public interface IterazioneGiocatore {
+public interface DashBoardUtente {
     /**
      * Metodo che permette al giocatore di effettuare una mossa
      * @param g giocatore che muove
@@ -32,7 +32,6 @@ public interface IterazioneGiocatore {
      * @param s stato scacchiera
      */
     public void stampaScacchiera(Scacchiera s);
-   // public void stampaPezziMangiati(ArrayList<Pezzo> p);
 
     /**
      * Dato un pezzo ti fa scegliere le sue mosse disponibili

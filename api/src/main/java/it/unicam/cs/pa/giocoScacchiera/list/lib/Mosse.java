@@ -16,6 +16,7 @@ public  interface  Mosse {
     public Posizione mossa(Posizione p);
 
     /***
+     * Restituisce il tipo di mossa
      * @return il tipo della mossa
      */
     public TypeMosse getType();

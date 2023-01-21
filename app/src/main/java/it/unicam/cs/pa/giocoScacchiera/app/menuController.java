@@ -23,7 +23,7 @@ public class menuController {
         String nomeGiocatoreBianco = s.next();
 
         System.out.println("INSERIRE IL NOME DEL GIOCATORE CHE VUOLE UTILIZZARE I NERI  : \n" +
-                "SCRIVERE [BOT] se si assegnare i bianchi al bot");
+                "SCRIVERE [BOT] se si vuole assegnare i neri al bot");
         String nomeGiocatoreNERO = s.next();
 
         Gioco g = new GiocoDama(new GiocatoreDama(nomeGiocatoreBianco, ColorePezzi.BIANCO),new GiocatoreDama(nomeGiocatoreNERO,ColorePezzi.NERO));

@@ -175,7 +175,7 @@ public  class RegoleDama implements Regolamento{
 
     @Override
     public Scacchiera gestisciMosseGiocatore(Scacchiera s, Pair<Pezzo, Mosse> p, Giocatore turno,Gioco g) {
-        IterazioneGiocatore itr = new DashBoardUtente();
+        DashBoardUtente itr = new DashBoardUtenteDama();
         if (p.getValue().getType() == TypeMosse.MossaResa){
             int n;
             if (turno.getColore().isBlack()) n = itr.finePartita(g.getGiocatoreB());

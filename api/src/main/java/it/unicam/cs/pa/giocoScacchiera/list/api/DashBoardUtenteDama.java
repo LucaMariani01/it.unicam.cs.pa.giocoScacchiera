@@ -9,7 +9,7 @@ import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 /**
  * Classe che gestisce le stampe e i vari input dell'utente
  */
-public class DashBoardUtente implements IterazioneGiocatore {
+public class DashBoardUtenteDama implements DashBoardUtente {
     @Override
     public Pair<Pezzo, Mosse> scegliMossa(Giocatore g, Scacchiera s, HashMap<Pezzo, ArrayList<Mosse>> mappaMosse) {
 
