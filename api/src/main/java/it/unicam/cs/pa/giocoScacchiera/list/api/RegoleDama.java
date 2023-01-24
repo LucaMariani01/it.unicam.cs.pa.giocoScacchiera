@@ -13,16 +13,10 @@ public  class RegoleDama implements Regolamento{
     @Override
     public Giocatore casiVittoria(Scacchiera s, Gioco g ) {
 
-        if(s.listaPezziMangiati().stream().filter(e->e.getColore().isWhite()).count() == 12){
-            g.getGiocatoreN().aggiungiVittoria();
-            g.getGiocatoreB().aggiungiPartita();
-            return g.getGiocatoreN();
-        }
-        if (s.listaPezziMangiati().stream().filter(e->e.getColore().isBlack()).count() == 12) {
-            g.getGiocatoreB().aggiungiVittoria();
-            g.getGiocatoreN().aggiungiPartita();
-            return g.getGiocatoreB();
-        }
+        if(s.listaPezziMangiati().stream().filter(e->e.getColore().isWhite()).count() == 12) return g.getGiocatoreN();
+
+        if (s.listaPezziMangiati().stream().filter(e->e.getColore().isBlack()).count() == 12) return g.getGiocatoreB();
+
         return null;
     }
     @Override

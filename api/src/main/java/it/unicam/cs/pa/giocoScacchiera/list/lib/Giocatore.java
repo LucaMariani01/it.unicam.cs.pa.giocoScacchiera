@@ -20,14 +20,21 @@ public interface Giocatore {
     public int vittorieGiocatore();
 
     /**
-     * Aggiunge una vittoria al giocatore
+     * Aggiorna il punteggio del giocatore
+     * @param n intero da incrementare
      */
-    public void aggiungiVittoria();
+    public void aggiungiVittoria(int n);
 
     /**
      * Aggiunge una partita al giocatore
      */
     public void aggiungiPartita();
+
+    /**
+     * Aggiorna il punteggio del giocatore in caso di sconfitta
+     * @param n valore da decrementare
+     */
+    public void aggiungiSconfitta(int n);
 
     /**
      * Restituisce il colore assegnato al giocatore

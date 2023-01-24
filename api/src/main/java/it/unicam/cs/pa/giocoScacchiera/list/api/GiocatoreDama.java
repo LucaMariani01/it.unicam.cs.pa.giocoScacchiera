@@ -14,9 +14,9 @@ public class GiocatoreDama implements Giocatore {
      */
     final private ColorePezzi colore;
     /**
-     * Numero vittorie del giocatore
+     * Punteggio giocatore
      */
-    private int numeroVittorie;
+    private int punteggioElo;
     /**
      * Numero partite giocate dal giocatore
      */
@@ -33,7 +33,7 @@ public class GiocatoreDama implements Giocatore {
 
         this.nome = nome;
         this.colore = colore;
-        this.numeroVittorie = 0;
+        this.punteggioElo = 0;
         this.partiteGiocate = 0;
 
     }
@@ -45,13 +45,20 @@ public class GiocatoreDama implements Giocatore {
 
     @Override
     public int vittorieGiocatore() {
-        return this.numeroVittorie;
+        return this.punteggioElo;
+    }
+
+
+    @Override
+    public void aggiungiVittoria(int n) {
+        this.aggiungiPartita();
+        this.punteggioElo = this.punteggioElo + n;
     }
 
     @Override
-    public void aggiungiVittoria() {
+    public void aggiungiSconfitta(int n) {
         this.aggiungiPartita();
-        this.numeroVittorie++;
+        this.punteggioElo = this.punteggioElo - n;
     }
 
     @Override

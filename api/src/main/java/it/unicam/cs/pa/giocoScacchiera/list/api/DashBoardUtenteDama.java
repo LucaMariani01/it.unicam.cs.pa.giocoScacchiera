@@ -52,7 +52,7 @@ public class DashBoardUtenteDama implements DashBoardUtente {
 
         for (int i = 0;i<m.size();i++) System.out.println((i+1)+")"+m.get(i));
 
-        System.out.println("INSERIRE IL NUMERO DELLA MOSSA DEL PEZZO : "+p);
+        System.out.println("INSERIRE IL NUMERO DELLA MOSSA DEL PEZZO : "+p +" NUMERO PEZZO:"+p.getN());
         int input ;
         do {
             try {
@@ -105,7 +105,7 @@ public class DashBoardUtenteDama implements DashBoardUtente {
 
     @Override
     public int finePartita(Giocatore g) {
-        System.out.println("\nCOMPLIMENTI IL GIOCATORE :"+ g.getNome()+" CON COLORE 0"+g.getColore()+" HA VINTO LA PARTITA");
+        System.out.println("\nCOMPLIMENTI IL GIOCATORE :"+ g.getNome()+" CON COLORE :"+g.getColore()+" HA VINTO LA PARTITA");
 
         System.out.println("\n VOLETE RIGIOCARE UN'ALTRA PARITA ?? \n DIGITA 1 PER SI ALTRO PER NO");
         Scanner scanner = new Scanner(System.in);
