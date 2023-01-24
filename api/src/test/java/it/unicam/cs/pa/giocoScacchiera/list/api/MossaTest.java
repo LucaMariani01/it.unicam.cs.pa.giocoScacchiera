@@ -37,7 +37,7 @@ class MossaTest {
      * Test mosse mangia
      */
     @Test
-    void mossaMangia()
+    void mossaMangiaTest()
     {
         Mosse m = new MossaMangiaDietroDx();
         assertEquals(new PosizionePezzo(4,4),m.mossa(new PosizionePezzo(2,2)));

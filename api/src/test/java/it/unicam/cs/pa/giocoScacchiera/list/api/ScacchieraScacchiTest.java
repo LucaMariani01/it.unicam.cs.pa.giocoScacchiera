@@ -17,7 +17,7 @@ class ScacchieraScacchiTest {
      * Test sulla corretto posizionamento dei pezzi
      */
     @Test
-    void listaPosizionePezzi() {
+    void listaPosizionePezziTest() {
         Scacchiera s = new ScacchieraScacchi();
         HashMap<Pezzo, Posizione> mappa = new HashMap<>();
 
@@ -37,7 +37,7 @@ class ScacchieraScacchiTest {
      * Test se la lista dei pezzi mangiati calcolata correttamente
      */
     @Test
-    void listaPezziMangiati() {
+    void listaPezziMangiatiTest() {
         Scacchiera s = new ScacchieraScacchi();
         ArrayList<Pezzo> listaPezzi = new ArrayList<>();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(0,0));
@@ -54,7 +54,7 @@ class ScacchieraScacchiTest {
      * Test se il pezzo sia spostato correttamente
      */
     @Test
-    void spostaPezzo() {
+    void spostaPezzoTest() {
         Scacchiera s = new ScacchieraScacchi();
         ArrayList<Pezzo> listaPezzi = new ArrayList<>();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(0,0));
@@ -72,7 +72,7 @@ class ScacchieraScacchiTest {
      * Test che controlla che il pezzo cercato sia restituito il risultato corretto
      */
     @Test
-    void cercaPezzo() {
+    void cercaPezzoTest() {
         Scacchiera s = new ScacchieraScacchi();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(0,0));
         assertEquals(s.cercaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1)),new PosizionePezzo(0,0));
@@ -84,7 +84,7 @@ class ScacchieraScacchiTest {
      * Test che controlla che il metodo postoVuoto sia corretto
      */
     @Test
-    void postoVuoto() {
+    void postoVuotoTest() {
         Scacchiera s = new ScacchieraScacchi();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(0,0));
         assertTrue(s.postoVuoto(new PosizionePezzo(3,3)));
@@ -95,7 +95,7 @@ class ScacchieraScacchiTest {
      * Test che controlla che il metodo statoPosizione sia corretto
      */
     @Test
-    void statoPosizione() {
+    void statoPosizioneTest() {
         Scacchiera s = new ScacchieraScacchi();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(0,0));
        assertEquals(s.statoPosizione(new PosizionePezzo(0,0)).get(),new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1));
@@ -107,7 +107,7 @@ class ScacchieraScacchiTest {
      * Test che controlla che i pezzi vengano trasformati correttamente
      */
     @Test
-    void trasformaPezzo() {
+    void trasformaPezzoTest() {
         Scacchiera s = new ScacchieraScacchi();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(7,7));
 

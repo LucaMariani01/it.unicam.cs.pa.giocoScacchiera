@@ -45,7 +45,7 @@ class RegoleDamaTest {
      * Test del corretto calcolo della posizione iniziale nella scacchiera
      */
     @Test
-    void statoIniziale() {
+    void statoInizialeTest() {
         Scacchiera s = new ScacchieraScacchi();
         Regolamento r = new RegoleDama();
         s = r.statoIniziale(s);
@@ -119,7 +119,7 @@ class RegoleDamaTest {
      * Test che controlla che il calcolo della possibilità di mangiare sia corretto
      */
     @Test
-    void possibileMangiare() {
+    void possibileMangiareTest() {
         Regolamento r = new RegoleDama();
         Pezzo p = new Pedina(NomePezzi.PEDINA,ColorePezzi.BIANCO,1);
         Pezzo p1 = new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,2);
@@ -135,7 +135,7 @@ class RegoleDamaTest {
      * Test sul metodo che calcola la posizione del pezzo mangiato
      */
     @Test
-    void posizionePezzoMangiato() {
+    void posizionePezzoMangiatoTest() {
         Scacchiera s = new ScacchieraScacchi();
         Regolamento r = new RegoleDama();
         Pezzo p = new Pedina(NomePezzi.PEDINA,ColorePezzi.BIANCO,1);
