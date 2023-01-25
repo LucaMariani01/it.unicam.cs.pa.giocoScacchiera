@@ -197,4 +197,19 @@ public  class RegoleDama implements Regolamento{
             return true;
         }else return false;
     }
+
+    @Override
+    public boolean pedinaCanBecomeDama(Pezzo p, Posizione pos) {
+        ColorePezzi c = ColorePezzi.BIANCO;
+        int fineScacchiera = 7;
+
+        for (int i = 0 ; i<2 ;i++){
+            if (p.getColore().equals(c) && pos.y()==fineScacchiera &&
+                    p.getNomePezzo().equals(NomePezzi.PEDINA)) return true;
+
+            c = ColorePezzi.NERO;
+            fineScacchiera = 0;
+        }
+        return false;
+    }
 }

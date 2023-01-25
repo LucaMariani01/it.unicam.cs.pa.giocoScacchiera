@@ -94,4 +94,12 @@ public  interface  Regolamento {
      * @return scacchiera ricalcolata dopo la mossa
      */
     public boolean giocatoreMangia(Pair<Pezzo,Mosse> p,Scacchiera s);
+
+    /**
+     * Controlla se un pezzo in una determinata posizione puù diventare una dama
+     * @param p pedina
+     * @param pos posizione
+     * @return true se puo diventare dama
+     */
+    public boolean pedinaCanBecomeDama(Pezzo p,Posizione pos);
 }

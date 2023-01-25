@@ -75,10 +75,12 @@ public interface Scacchiera {
     public Boolean aggiungiPezzo(Pezzo p, Posizione pos);
 
     /**
-     *Trasforma un pezzo un pezzo in un altro in determinate condizioni
-     * @param p pezzo
+     * Trasforma un pezzo un pezzo in un altro in determinate condizioni
+     *
+     * @param p          pezzo
+     * @param pezzoNuovo nuovo pezzo
      * @return true se il pezzo è stato trasformato
      */
-    public boolean trasformaPezzo(Pezzo p);
+    public boolean trasformaPezzo(Pezzo p, Pezzo pezzoNuovo);
 
 }

@@ -139,22 +139,13 @@ public class ScacchieraScacchi implements Scacchiera {
     }
 
     @Override
-    public boolean trasformaPezzo(Pezzo p) {
-        ColorePezzi c = ColorePezzi.BIANCO;
-        int fineScacchiera = 7;
+    public boolean trasformaPezzo(Pezzo p, Pezzo pezzoNuovo) {
 
-        for (int i = 0 ; i<2 ;i++){
-            if (p.getColore().equals(c) && this.cercaPezzo(p).y()==fineScacchiera &&
-                    p.getNomePezzo().equals(NomePezzi.PEDINA)){
-                Posizione posizioneApp = this.cercaPezzo(p);
-                this.rimuoviPezzo(p);
-                this.aggiungiPezzo(new Pedina(NomePezzi.DAMA,p.getColore(),p.getN()),posizioneApp);
-                return true;
-            }
-            c = ColorePezzi.NERO;
-            fineScacchiera = 0;
-        }
-        return false;
+        Posizione posizioneApp = this.cercaPezzo(p);
+        this.rimuoviPezzo(p);
+        this.aggiungiPezzo(pezzoNuovo,posizioneApp);
+
+        return true;
     }
 
 

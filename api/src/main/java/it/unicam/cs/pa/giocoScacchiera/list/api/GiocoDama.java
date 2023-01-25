@@ -64,7 +64,7 @@ public class GiocoDama implements Gioco {
             if (p.getValue().getType()==TypeMosse.MossaResa) return;
 
             this.mangiataMultipla(turno,p);
-            this.scacchiera.trasformaPezzo(p.getKey());
+            if(this.regolamento.pedinaCanBecomeDama(p.getKey(),this.scacchiera.cercaPezzo(p.getKey())))this.scacchiera.trasformaPezzo(p.getKey(),new Pedina(NomePezzi.DAMA,p.getKey().getColore(),p.getKey().getN()) );
             if (turno.getColore().isBlack()) turno =this.giocatoreB;
             else turno =this.giocatoreN;
         }

@@ -1,6 +1,5 @@
 package it.unicam.cs.pa.giocoScacchiera.list.api;
 
-import it.unicam.cs.pa.giocoScacchiera.list.api.*;
 import it.unicam.cs.pa.giocoScacchiera.list.lib.*;
 import org.junit.jupiter.api.Test;
 
@@ -111,8 +110,8 @@ class ScacchieraScacchiTest {
         Scacchiera s = new ScacchieraScacchi();
         s.aggiungiPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(7,7));
 
-        assertFalse(s.trasformaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1)));
+        assertFalse(s.trasformaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1), new Pedina(NomePezzi.DAMA,ColorePezzi.NERO,1) ));
         s.spostaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1),new PosizionePezzo(0,0));
-        assertTrue(s.trasformaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1)));
+        assertTrue(s.trasformaPezzo(new Pedina(NomePezzi.PEDINA,ColorePezzi.NERO,1), new Pedina(NomePezzi.DAMA,ColorePezzi.NERO,1) ));
     }
 }
